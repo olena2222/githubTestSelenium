@@ -1,75 +1,79 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.time.Duration;
 
 public class SignUpPage {
     WebDriver driver;
 
-
-    public SignUpPage (WebDriver driver)
-    {
-        this.driver=driver;
+    public SignUpPage(WebDriver driver) {
+        this.driver = driver;
     }
 
 
-    @FindBy(xpath="//input[@id='email']")
-    private WebElement typeEmail;
+    @FindBy(css = "#email")
+    private WebElement typeEmailField;
+    @FindBy(css = "[data-continue-to='password-container']")
+    private WebElement continueButtonAfterEmail;
 
-    @FindBy(xpath = "//button[@data-optimizely-event='click.signup_continue.email']")
-    private WebElement continueEmail;
-    @FindBy(xpath = "//input[@id='password']")
-    private WebElement createPassword;
+    @FindBy(css = "#password")
+    private WebElement createPasswordField;
+    @FindBy(css = "[data-continue-to='username-container']")
+    private WebElement continueButtonAfterPassword;
+    @FindBy(css = "#login")
+    private WebElement typeUsernameField;
+    @FindBy(css = "[data-continue-to='opt-in-container']")
+    private WebElement continueButtonAfterUsername;
 
-    @FindBy(xpath = "//div[@id='password-container']//button[@data-optimizely-event='click.signup_continue.password']" )
-    private WebElement continuePassword;
 
-    @FindBy(xpath = "//input[@id='login']" )
-    private WebElement typeUserName;
-    @FindBy(xpath = "//button[@data-optimizely-event='click.signup_continue.username']")
-    private WebElement continueUsername;
-    @FindBy(xpath = "//span[text()='Welcome to GitHub!']")
-    private WebElement headingSignUp;
-
-    public SignUpPage typeEmailField(String email){
-   typeEmail.sendKeys(email);
+    public SignUpPage typeEmailField(String email) {
+        typeEmailField.sendKeys(email);
         return this;
     }
-    public SignUpPage clickContinue1(){
-        continueEmail.click();
+
+    public SignUpPage clickContinueEmail() {
+        continueButtonAfterEmail.click();
         return this;
     }
+
+
     public SignUpPage typePasswordField(String password) {
-        createPassword.sendKeys(password);
+        createPasswordField.sendKeys(password);
         return this;
+    }
 
-    }
-    public SignUpPage clickContinue2(){
-        continuePassword.click();
+    public SignUpPage clickContinuePassword() {
+        continueButtonAfterPassword.click();
         return this;
     }
+
     public SignUpPage typeUsernameField(String username) {
-        typeUserName.sendKeys(username);
+        typeUsernameField.sendKeys(username);
         return this;
     }
-    public SignUpPage clickContinue3(){
-        continueUsername.click();
+
+    public SignUpPage clickContinueUsername() {
+        continueButtonAfterUsername.click();
         return this;
     }
-    public SignUpPage register(String email,String password, String username){
 
-        this.typeEmailField(email);
-       this.clickContinue1();
+    public SignUpPage register(String email, String password, String username) {
 
-       this.typePasswordField(password);
-       this.clickContinue2();
-       this.typeUsernameField(username);
-       this.clickContinue3();
-       return new SignUpPage(driver);
+        typeEmailField(email);
+        clickContinueEmail();
+
+        typePasswordField(password);
+        clickContinuePassword();
+
+        typeUsernameField(username);
+        clickContinueUsername();
+        return this;
     }
 
 }

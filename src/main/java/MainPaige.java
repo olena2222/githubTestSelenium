@@ -8,9 +8,12 @@ public class MainPaige {
     public MainPaige(WebDriver driver){
         this.driver=driver;
     }
+    @FindBy(css = ".h0-mktg")
+    private WebElement LetsBuildFromHereHeader;
+
     @FindBy(xpath = "//a[@class='HeaderMenu-link HeaderMenu-link--sign-in flex-shrink-0 no-underline d-block d-lg-inline-block border border-lg-0 rounded rounded-lg-0 p-2 p-lg-0']")
     private WebElement signInButton;
-    @FindBy(xpath = "//a[@class='HeaderMenu-link HeaderMenu-link--sign-up flex-shrink-0 d-none d-lg-inline-block no-underline border color-border-default rounded px-2 py-1']")
+    @FindBy(css = ".HeaderMenu-link--sign-up")
     private WebElement signUpButton;
     @FindBy(xpath = "//input[@id='user_email']" )
     private WebElement emailField;
