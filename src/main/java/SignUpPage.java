@@ -1,13 +1,8 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.time.Duration;
 
 public class SignUpPage {
     WebDriver driver;
@@ -18,27 +13,27 @@ public class SignUpPage {
 
 
     @FindBy(css = "#email")
-    private WebElement typeEmailField;
+    private WebElement enterEmailField;
     @FindBy(css = "[data-continue-to='password-container']")
-    private WebElement continueButtonAfterEmail;
+    private WebElement continueButtonEmail;
 
     @FindBy(css = "#password")
     private WebElement createPasswordField;
     @FindBy(css = "[data-continue-to='username-container']")
-    private WebElement continueButtonAfterPassword;
+    private WebElement continueButtonPassword;
     @FindBy(css = "#login")
     private WebElement typeUsernameField;
     @FindBy(css = "[data-continue-to='opt-in-container']")
-    private WebElement continueButtonAfterUsername;
+    private WebElement continueButtonUsername;
 
 
     public SignUpPage typeEmailField(String email) {
-        typeEmailField.sendKeys(email);
+        enterEmailField.sendKeys(email);
         return this;
     }
 
     public SignUpPage clickContinueEmail() {
-        continueButtonAfterEmail.click();
+        continueButtonEmail.click();
         return this;
     }
 
@@ -49,7 +44,7 @@ public class SignUpPage {
     }
 
     public SignUpPage clickContinuePassword() {
-        continueButtonAfterPassword.click();
+        continueButtonPassword.click();
         return this;
     }
 
@@ -59,7 +54,7 @@ public class SignUpPage {
     }
 
     public SignUpPage clickContinueUsername() {
-        continueButtonAfterUsername.click();
+        continueButtonUsername.click();
         return this;
     }
 

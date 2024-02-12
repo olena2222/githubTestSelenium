@@ -45,21 +45,9 @@ public class MainClassTest {
         driver.findElement(By.cssSelector("[data-continue-to='opt-in-container']")).isEnabled();
         driver.findElement(By.cssSelector("[data-continue-to='opt-in-container']")).click();
 
-
-
-
-
-
-
     }
 
-    @Test
-    public void method2() {
-    }
 
-    @Test
-    public void method3() {
-    }
 
     @AfterEach
     public void tearDown() {
