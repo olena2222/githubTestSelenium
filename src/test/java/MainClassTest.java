@@ -2,7 +2,7 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import java.time.Duration;
 
@@ -11,27 +11,43 @@ public class MainClassTest {
 
     @BeforeAll
     public void beforeClassMethod() {
-       /* driver = new FirefoxDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-*/
+
     }
 
     @BeforeEach
     public void setUp() {
-        // driver.get("https://github.com/");
-    }
-
-    @Test
-    public void testGitHub() {
-        System.setProperty("webdriver.gecko.driver", "D:\\Olena\\test1\\drivers\\geckodriver.exe");
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://github.com/");
+    }
 
-        driver.findElement(By.cssSelector(".h0-mktg"));
-        driver.findElement(By.cssSelector(".HeaderMenu-link--sign-up"));
+    @Test
+    public void testGitHub() {
+
+new MainPaige(driver)
+        .verifyMainHeaderIsDisplayed()
+                .verifySignUpIsEnable()
+                        .clickSignUp();
+
+        new SignUpPage(driver)
+                .verifyIfHeaderIsDisplayed()
+                .typeEmailField("emailTest")
+                                .clickContinueToPassword()
+                                        .typePasswordField("passwordTest")
+                                                .clickContinueToUsername()
+                                                        .typeUsernameField("olena")
+                                                                .clickContinueToEmailPreferences()
+                                                                        .register();
+
+
+
+
+
+
+
+
+
         driver.findElement(By.cssSelector("#email-container")).isDisplayed();
         driver.findElement(By.cssSelector("#email")).sendKeys("test");
         driver.findElement(By.cssSelector("[data-continue-to='password-container']")).isEnabled();
@@ -55,8 +71,4 @@ public class MainClassTest {
 
     }
 
-    @AfterAll
-    @Disabled
-    public void afterClassMethod() {
-    }
 }

@@ -1,49 +1,37 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class MainPaige {
     private WebDriver driver;
 
     public MainPaige(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(css = ".h0-mktg")
-    private WebElement LetsBuildFromHereHeader;
-    @FindBy(css = ".HeaderMenu-link--sign-in")
-    private WebElement signInButton;
+    private WebElement letsBuildFromHereHeader;
     @FindBy(css = ".HeaderMenu-link--sign-up")
     private WebElement signUpButton;
-    @FindBy(css = ".home-campaign-hero form #user_email")
-    private WebElement emailFieldTop;
-    @FindBy(css = ".home-campaign-hero form [type='submit']")
-    private WebElement signUpForGitHubButtonTop;
 
-    public LoginPage clickSignIn() {
-        signInButton.click();
-        return new LoginPage(driver);
+
+    public MainPaige verifyMainHeaderIsDisplayed(){
+        letsBuildFromHereHeader.isDisplayed();
+        return this;
     }
+    public MainPaige verifySignUpIsEnable(){
+        signUpButton.isEnabled();
+        return this;
+    }
+
 
     public SignUpPage clickSignUp() {
         signUpButton.click();
         return new SignUpPage(driver);
     }
 
-    public SignUpPage signUpForGithubButton() {
-        signUpForGitHubButtonTop.click();
-        return new SignUpPage(driver);
-    }
 
-    public MainPaige typeEmail(String email) {
-        emailFieldTop.sendKeys(email);
-        return this;
-    }
-
-    public SignUpPage registerForGithub(String email) {
-        this.typeEmail(email);
-        this.signUpForGithubButton();
-        return new SignUpPage(driver);
-    }
 
 }
