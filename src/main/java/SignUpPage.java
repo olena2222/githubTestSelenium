@@ -28,7 +28,7 @@ public class SignUpPage {
     @FindBy(css = "[data-continue-to='username-container']")
     private WebElement continueToUsernameButton;
 
-    @FindBy(css ="#username-container" )
+    @FindBy(css = "#username-container")
     private WebElement usernameContainer;
     @FindBy(css = "#login")
     private WebElement typeUsernameField;

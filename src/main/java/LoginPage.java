@@ -33,10 +33,10 @@ public class LoginPage {
     }
 
     public LoginPage logInAccount(String email, String password) {
-        this.typeEmail(email);
-        this.typeEmail(password);
+        typeEmail(email);
+        typePassword(password);
         signInButton.click();
-        return new LoginPage(driver);
+        return this;
     }
 
 }

@@ -17,11 +17,12 @@ public class MainPaige {
     private WebElement signUpButton;
 
 
-    public MainPaige verifyMainHeaderIsDisplayed(){
+    public MainPaige verifyMainHeaderIsDisplayed() {
         letsBuildFromHereHeader.isDisplayed();
         return this;
     }
-    public MainPaige verifySignUpIsEnable(){
+
+    public MainPaige verifySignUpIsEnable() {
         signUpButton.isEnabled();
         return this;
     }
@@ -31,7 +32,6 @@ public class MainPaige {
         signUpButton.click();
         return new SignUpPage(driver);
     }
-
 
 
 }
