@@ -26,7 +26,7 @@ public class MainClassTest {
 
         new SignUpPage(driver)
                 .verifyIfHeaderIsDisplayed()
-                .typeEmailField("olena.bosa1@gmail.com")
+                .typeEmailField("test")
                 .clickContinueToPassword()
                 .typePasswordField("passwordTest87$5vg")
                 .clickContinueToUsername()

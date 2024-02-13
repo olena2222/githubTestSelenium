@@ -3,8 +3,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class SignUpPage {
     WebDriver driver;
 
@@ -27,7 +25,6 @@ public class SignUpPage {
     private WebElement createPasswordField;
     @FindBy(css = "[data-continue-to='username-container']")
     private WebElement continueToUsernameButton;
-
     @FindBy(css = "#username-container")
     private WebElement usernameContainer;
     @FindBy(css = "#login")
@@ -52,7 +49,6 @@ public class SignUpPage {
         return this;
     }
 
-
     public SignUpPage typePasswordField(String password) {
         passwordContainer.isDisplayed();
         createPasswordField.sendKeys(password);
@@ -74,16 +70,6 @@ public class SignUpPage {
     public SignUpPage clickContinueToEmailPreferences() {
         continueToEmailPreferencesButton.isEnabled();
         continueToEmailPreferencesButton.click();
-        return this;
-    }
-
-    public SignUpPage register(String email, String password, String username) {
-        typeEmailField(email);
-        clickContinueToPassword();
-        typePasswordField(password);
-        clickContinueToUsername();
-        typeUsernameField(username);
-        clickContinueToEmailPreferences();
         return this;
     }
 

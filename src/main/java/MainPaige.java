@@ -27,7 +27,6 @@ public class MainPaige {
         return this;
     }
 
-
     public SignUpPage clickSignUp() {
         signUpButton.click();
         return new SignUpPage(driver);
