@@ -1,16 +1,17 @@
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class SignUpPage {
-    WebDriver driver;
-
-    public SignUpPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
-
+    WebDriverWait wait;
+WebDriver driver;
     @FindBy(css = ".js-signup-typed-welcome")
     private WebElement welcomeToGitHubHeader;
     @FindBy(css = "#email-container")
@@ -31,20 +32,26 @@ public class SignUpPage {
     private WebElement typeUsernameField;
     @FindBy(css = "[data-continue-to='opt-in-container']")
     private WebElement continueToEmailPreferencesButton;
+    public SignUpPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
-    public SignUpPage verifyIfHeaderIsDisplayed() {
+    public SignUpPage verifyIfSignUpPageIsDisplayed() {
         welcomeToGitHubHeader.isDisplayed();
         return this;
     }
 
     public SignUpPage typeEmailField(String email) {
-        emailContainer.isDisplayed();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(emailContainer));
         enterEmailField.sendKeys(email);
         return this;
     }
 
     public SignUpPage clickContinueToPassword() {
-        continueToPasswordButton.isEnabled();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(continueToPasswordButton));
         continueToPasswordButton.click();
         return this;
     }
@@ -56,7 +63,8 @@ public class SignUpPage {
     }
 
     public SignUpPage clickContinueToUsername() {
-        continueToUsernameButton.isEnabled();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(continueToUsernameButton));
         continueToUsernameButton.click();
         return this;
     }

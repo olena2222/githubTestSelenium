@@ -20,18 +20,28 @@ public class MainClassTest {
     public void testGitHub() {
 
         new MainPaige(driver)
-                .verifyMainHeaderIsDisplayed()
-                .verifySignUpIsEnable()
+                .verifyMainPaigeIsDisplayed()
                 .clickSignUp();
 
         new SignUpPage(driver)
-                .verifyIfHeaderIsDisplayed()
-                .typeEmailField("test")
+                .verifyIfSignUpPageIsDisplayed()
+                .typeEmailField("olena.bosa1@gmail.com")
                 .clickContinueToPassword()
                 .typePasswordField("passwordTest87$5vg")
                 .clickContinueToUsername()
-                .typeUsernameField("olena")
+                .typeUsernameField("olegrgrgna")
                 .clickContinueToEmailPreferences();
+
+        new LoginPage(driver)
+                .verifyLogInPageIsDisplayed()
+                .typeEmail("olena.bosa@gmail.com")
+                .typePassword("password")
+                .clickSignIn()
+                .forgotPassword();
+
+
+
+
     }
     @AfterEach
     public void tearDown() {
