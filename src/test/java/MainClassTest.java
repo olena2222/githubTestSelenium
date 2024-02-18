@@ -17,7 +17,7 @@ public class MainClassTest {
     }
 
     @Test
-    public void testGitHub() {
+    public void testSignUp() {
 
         new MainPaige(driver)
                 .verifyMainPaigeIsDisplayed()
@@ -31,18 +31,23 @@ public class MainClassTest {
                 .clickContinueToUsername()
                 .typeUsernameField("olegrgrgna")
                 .clickContinueToEmailPreferences();
+    }
+    @Test
+    public void testLoginPage() {
+        new MainPaige(driver)
+                .verifyMainPaigeIsDisplayed()
+                .clickSignIn();
 
         new LoginPage(driver)
                 .verifyLogInPageIsDisplayed()
                 .typeEmail("olena.bosa@gmail.com")
-                .typePassword("password")
+                .typePassword("Qa138468")
                 .clickSignIn()
-                .forgotPassword();
-
-
-
-
+                .forgotPassword()
+                .signInWithPasskey()
+                .createAccount();
     }
+
     @AfterEach
     public void tearDown() {
         driver.close();

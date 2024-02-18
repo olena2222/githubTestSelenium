@@ -1,4 +1,3 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -45,6 +44,14 @@ public LoginPage clickSignIn(){
 }
 public LoginPage forgotPassword(){
         forgotPasswordLink.click();
+        return this;
+}
+public LoginPage signInWithPasskey (){
+        signInWithPasskey.click();
+        return this;
+}
+public LoginPage createAccount(){
+        createAccount.click();
         return this;
 }
 
