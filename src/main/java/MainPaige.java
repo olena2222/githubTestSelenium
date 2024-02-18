@@ -5,7 +5,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class MainPaige {
-    WebDriver driver;
     @FindBy(css = ".h0-mktg")
     private WebElement letsBuildFromHereHeader;
     @FindBy(css = ".HeaderMenu-link--sign-up")
@@ -13,7 +12,6 @@ public class MainPaige {
     @FindBy(css = ".HeaderMenu-link--sign-in")
     private WebElement signInButton;
     public MainPaige(WebDriver driver) {
-        this.driver=driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -22,15 +20,15 @@ public class MainPaige {
         return this;
     }
 
-    public SignUpPage clickSignUp() {
+    public MainPaige clickSignUp() {
         signUpButton.isEnabled();
         signUpButton.click();
-        return new SignUpPage(driver);
+        return this;
     }
-    public LoginPage clickSignIn(){
+    public MainPaige clickSignIn(){
 signInButton.isDisplayed();
 signInButton.click();
-        return new LoginPage(driver);
+        return this;
     }
 
 

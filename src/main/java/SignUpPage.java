@@ -10,15 +10,10 @@ import java.time.Duration;
 public class SignUpPage {
     WebDriverWait wait;
 
-
     @FindBy(css = ".js-signup-typed-welcome")
     private WebElement welcomeToGitHubHeader;
     @FindBy(css = "#email-container")
     private WebElement emailContainer;
-
-    @FindBy(css = "label.text-mono.signup-text-prompt[for=\"email\"]")
-    private WebElement text1;
-
     @FindBy(css = "#email")
     private WebElement enterEmailField;
     @FindBy(css = "[data-continue-to='password-container']")

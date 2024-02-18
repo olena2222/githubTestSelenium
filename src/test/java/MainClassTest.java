@@ -42,10 +42,10 @@ public class MainClassTest {
                 .verifyLogInPageIsDisplayed()
                 .typeEmail("olena.bosa@gmail.com")
                 .typePassword("Qa138468")
-                .clickSignIn();
-                //.forgotPassword()
-                //.signInWithPasskey()
-                //.createAccount();
+                .clickSignIn()
+                .forgotPassword()
+                .signInWithPasskey()
+                .createAccount();
     }
 
     @AfterEach
