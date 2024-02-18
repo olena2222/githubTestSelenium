@@ -25,15 +25,18 @@ public class MainClassTest {
 
         new SignUpPage(driver)
                 .verifyIfSignUpPageIsDisplayed()
-                .typeEmailField("olena.bosa1@gmail.com")
+                .typeEmailField("olena.bosa2@gmail.com")
                 .clickContinueToPassword()
                 .typePasswordField("passwordTest87$5vg")
                 .clickContinueToUsername()
                 .typeUsernameField("olegrgrgna")
-                .clickContinueToEmailPreferences();
+                .clickContinueToEmailPreferences()
+                .clickEmailPreferences()
+                .clickContinueToVerifyAccount();
+
     }
     @Test
-    public void testLoginPage() {
+    public void testLogin() {
         new MainPaige(driver)
                 .verifyMainPaigeIsDisplayed()
                 .clickSignIn();
@@ -42,11 +45,37 @@ public class MainClassTest {
                 .verifyLogInPageIsDisplayed()
                 .typeEmail("olena.bosa@gmail.com")
                 .typePassword("Qa138468")
-                .clickSignIn()
-                .forgotPassword()
-                .signInWithPasskey()
+                .clickSignIn();
+    }
+
+    @Test
+    public void testForgotPassword() {
+        new MainPaige(driver)
+                .verifyMainPaigeIsDisplayed()
+                .clickSignIn();
+
+        new LoginPage(driver)
+                .forgotPassword();
+    }
+    @Test
+    public void signInWithPasskey() {
+        new MainPaige(driver)
+                .verifyMainPaigeIsDisplayed()
+                .clickSignIn();
+
+        new LoginPage(driver)
+                .signInWithPasskey();
+    }
+    @Test
+    public void createAnAccount() {
+        new MainPaige(driver)
+                .verifyMainPaigeIsDisplayed()
+                .clickSignIn();
+
+        new LoginPage(driver)
                 .createAccount();
     }
+
 
     @AfterEach
     public void tearDown() {

@@ -30,6 +30,14 @@ public class SignUpPage {
     private WebElement typeUsernameField;
     @FindBy(css = "[data-continue-to='opt-in-container']")
     private WebElement continueToEmailPreferencesButton;
+    @FindBy(css = "#opt-in-container")
+    private WebElement emailPreferencesContainer;
+    @FindBy(css = "#opt_in")
+    private WebElement emailPreferencesCheckbox;
+    @FindBy(css = "button.js-continue-button.signup-continue-button.form-control.px-3.width-full.width-sm-auto.mt-4.mt-sm-0[data-continue-to=\"captcha-and-submit-container\"]")
+    private WebElement continueToVerifyAccountButton;
+
+
     public SignUpPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -71,8 +79,22 @@ public class SignUpPage {
     }
 
     public SignUpPage clickContinueToEmailPreferences() {
-        continueToEmailPreferencesButton.isEnabled();
+        wait.until(ExpectedConditions.elementToBeClickable(continueToEmailPreferencesButton));
         continueToEmailPreferencesButton.click();
         return this;
     }
+    public SignUpPage clickEmailPreferences() {
+        emailPreferencesContainer.isDisplayed();
+        if (!emailPreferencesCheckbox.isSelected()) {
+            emailPreferencesCheckbox.click();
+        }
+        return this;
+    }
+    public SignUpPage clickContinueToVerifyAccount() {
+        continueToVerifyAccountButton.isEnabled();
+        continueToVerifyAccountButton.click();
+        return this;
+    }
+
+
 }
