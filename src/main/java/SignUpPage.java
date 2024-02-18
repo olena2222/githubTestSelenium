@@ -7,14 +7,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-
 public class SignUpPage {
     WebDriverWait wait;
-WebDriver driver;
+
+
     @FindBy(css = ".js-signup-typed-welcome")
     private WebElement welcomeToGitHubHeader;
     @FindBy(css = "#email-container")
     private WebElement emailContainer;
+
+    @FindBy(css = "label.text-mono.signup-text-prompt[for=\"email\"]")
+    private WebElement text1;
+
     @FindBy(css = "#email")
     private WebElement enterEmailField;
     @FindBy(css = "[data-continue-to='password-container']")
@@ -32,8 +36,8 @@ WebDriver driver;
     @FindBy(css = "[data-continue-to='opt-in-container']")
     private WebElement continueToEmailPreferencesButton;
     public SignUpPage(WebDriver driver) {
-        this.driver = driver;
         PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public SignUpPage verifyIfSignUpPageIsDisplayed() {
@@ -42,14 +46,12 @@ WebDriver driver;
     }
 
     public SignUpPage typeEmailField(String email) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(emailContainer));
+       wait.until(ExpectedConditions.visibilityOf(emailContainer));
         enterEmailField.sendKeys(email);
         return this;
     }
 
     public SignUpPage clickContinueToPassword() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(continueToPasswordButton));
         continueToPasswordButton.click();
         return this;
@@ -62,7 +64,6 @@ WebDriver driver;
     }
 
     public SignUpPage clickContinueToUsername() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(continueToUsernameButton));
         continueToUsernameButton.click();
         return this;
@@ -79,5 +80,4 @@ WebDriver driver;
         continueToEmailPreferencesButton.click();
         return this;
     }
-
 }
