@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
 public class SignUpPage {
     WebDriverWait wait;
 
@@ -49,7 +50,7 @@ public class SignUpPage {
     }
 
     public SignUpPage typeEmailField(String email) {
-       wait.until(ExpectedConditions.visibilityOf(emailContainer));
+        wait.until(ExpectedConditions.visibilityOf(emailContainer));
         enterEmailField.sendKeys(email);
         return this;
     }
@@ -83,6 +84,7 @@ public class SignUpPage {
         continueToEmailPreferencesButton.click();
         return this;
     }
+
     public SignUpPage clickEmailPreferences() {
         emailPreferencesContainer.isDisplayed();
         if (!emailPreferencesCheckbox.isSelected()) {
@@ -90,6 +92,7 @@ public class SignUpPage {
         }
         return this;
     }
+
     public SignUpPage clickContinueToVerifyAccount() {
         continueToVerifyAccountButton.isEnabled();
         continueToVerifyAccountButton.click();

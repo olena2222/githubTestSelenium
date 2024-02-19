@@ -35,6 +35,7 @@ public class MainClassTest {
                 .clickContinueToVerifyAccount();
 
     }
+
     @Test
     public void testForgotPassword() {
         new MainPaige(driver)
@@ -44,6 +45,7 @@ public class MainClassTest {
         new LoginPage(driver)
                 .forgotPassword();
     }
+
     @Test
     public void signInWithPasskey() {
         new MainPaige(driver)
@@ -53,6 +55,7 @@ public class MainClassTest {
         new LoginPage(driver)
                 .signInWithPasskey();
     }
+
     @Test
     public void createAnAccount() {
         new MainPaige(driver)
@@ -62,6 +65,7 @@ public class MainClassTest {
         new LoginPage(driver)
                 .createAccount();
     }
+
     @Test
     public void testLogin() {
         new MainPaige(driver)
@@ -74,6 +78,7 @@ public class MainClassTest {
                 .typePassword("Qa138468")
                 .clickSignIn();
     }
+
     @Test
     public void testEditAccount() {
         new MainPaige(driver)
@@ -86,7 +91,7 @@ public class MainClassTest {
                 .typePassword("Qa138468")
                 .clickSignIn()
                 .clickAvatar()
-                .yourProfile();
+                .clickYourProfile();
 
     }
 

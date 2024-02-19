@@ -11,6 +11,7 @@ public class MainPaige {
     private WebElement signUpButton;
     @FindBy(css = ".HeaderMenu-link--sign-in")
     private WebElement signInButton;
+
     public MainPaige(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -25,9 +26,10 @@ public class MainPaige {
         signUpButton.click();
         return this;
     }
-    public MainPaige clickSignIn(){
-signInButton.isDisplayed();
-signInButton.click();
+
+    public MainPaige clickSignIn() {
+        signInButton.isDisplayed();
+        signInButton.click();
         return this;
     }
 

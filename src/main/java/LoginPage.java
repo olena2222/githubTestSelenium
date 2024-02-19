@@ -33,48 +33,58 @@ public class LoginPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
-    public LoginPage verifyLogInPageIsDisplayed(){
+
+    public LoginPage verifyLogInPageIsDisplayed() {
         headerSignIn.isDisplayed();
         return this;
     }
-    public LoginPage typeEmail(String email){
+
+    public LoginPage typeEmail(String email) {
+        emailField.isDisplayed();
         emailField.sendKeys(email);
         return this;
     }
+
     public LoginPage typePassword(String password) {
+        passwordField.isDisplayed();
         passwordField.sendKeys(password);
         return this;
     }
-public LoginPage clickSignIn(){
+
+    public LoginPage clickSignIn() {
+        signInButton.isEnabled();
         signInButton.click();
         return this;
-}
-public LoginPage forgotPassword(){
+    }
+
+    public LoginPage forgotPassword() {
+        forgotPasswordLink.isEnabled();
         forgotPasswordLink.click();
         return this;
-}
-public LoginPage signInWithPasskey (){
+    }
+
+    public LoginPage signInWithPasskey() {
+        signInWithPasskey.isEnabled();
         signInWithPasskey.click();
         return this;
-}
-public LoginPage createAccount(){
+    }
+
+    public LoginPage createAccount() {
+        createAccount.isEnabled();
         createAccount.click();
         return this;
-}
-    public LoginPage clickAvatar(){
+    }
+
+    public LoginPage clickAvatar() {
         avatarLabel.isDisplayed();
         avatarLabel.click();
         return this;
     }
-    public LoginPage yourProfile(){
-       wait.until(ExpectedConditions.visibilityOf(yourProfile));
-        yourProfile.click();
+
+    public LoginPage clickYourProfile() {
+        wait.until(ExpectedConditions.visibilityOf(yourProfile)).click();
         return this;
     }
-
-
-
-
 
 
 }
