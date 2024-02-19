@@ -28,7 +28,7 @@ public class MainPaige {
     }
 
     public MainPaige clickSignIn() {
-        signInButton.isDisplayed();
+        signInButton.isEnabled();
         signInButton.click();
         return this;
     }

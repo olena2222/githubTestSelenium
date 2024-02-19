@@ -21,7 +21,7 @@ public class LoginPage {
     private WebElement forgotPasswordLink;
     @FindBy(css = ".mt-1 a")
     private WebElement createAccount;
-    @FindBy(css = ".mb-0")
+    @FindBy(css = "p.mb-0.mt-0.js-webauthn-subtle-emu-control")
     private WebElement signInWithPasskey;
     @FindBy(css = "span.Button-label > img.avatar.circle")
     private WebElement avatarLabel;
@@ -64,7 +64,7 @@ public class LoginPage {
     }
 
     public LoginPage signInWithPasskey() {
-        signInWithPasskey.isEnabled();
+        wait.until(ExpectedConditions.visibilityOf(signInWithPasskey));
         signInWithPasskey.click();
         return this;
     }
