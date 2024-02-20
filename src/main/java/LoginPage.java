@@ -56,12 +56,16 @@ public class LoginPage {
         signInButton.click();
         return this;
     }
+    public boolean isUserLoggedInSuccessfully() {
+        return avatarLabel.isDisplayed();
+    }
 
     public LoginPage forgotPassword() {
         forgotPasswordLink.isEnabled();
         forgotPasswordLink.click();
         return this;
     }
+
 
     public LoginPage signInWithPasskey() {
         wait.until(ExpectedConditions.visibilityOf(signInWithPasskey));
@@ -85,6 +89,8 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOf(yourProfile)).click();
         return this;
     }
+
+
 
 
 }
