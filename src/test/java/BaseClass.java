@@ -13,6 +13,17 @@ public abstract class BaseClass {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://github.com/");
     }
+    protected void navigateToSignUp() {
+        new MainPage(driver)
+                .verifyMainPageIsDisplayed()
+                .clickSignUp();
+    }
+
+    protected void navigateToSignIn() {
+        new MainPage(driver)
+                .verifyMainPageIsDisplayed()
+                .clickSignIn();
+    }
     @AfterEach
     public void tearDown() {
         driver.close();

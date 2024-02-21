@@ -9,6 +9,8 @@ import java.time.Duration;
 
 public class LoginPage {
     WebDriverWait wait;
+    @FindBy(css = ".js-signup-typed-welcome")
+    private WebElement welcomeToGitHubHeader;
     @FindBy(css = ".auth-form-header")
     private WebElement headerSignIn;
     @FindBy(css = "#login_field")
@@ -73,11 +75,16 @@ public class LoginPage {
         return this;
     }
 
+
     public LoginPage createAccount() {
         createAccount.isEnabled();
         createAccount.click();
         return this;
     }
+    public boolean isUserRedirectedToSignUp() {
+       return welcomeToGitHubHeader.isDisplayed();
+    }
+
 
     public LoginPage clickAvatar() {
         avatarLabel.isDisplayed();

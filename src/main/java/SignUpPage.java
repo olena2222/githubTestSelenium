@@ -44,6 +44,10 @@ public class SignUpPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+    public SignUpPage() {
+
+    }
+
     public SignUpPage verifyIfSignUpPageIsDisplayed() {
         welcomeToGitHubHeader.isDisplayed();
         return this;

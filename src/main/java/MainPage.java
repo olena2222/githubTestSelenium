@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MainPaige {
+public class MainPage {
     @FindBy(css = ".h0-mktg")
     private WebElement letsBuildFromHereHeader;
     @FindBy(css = ".HeaderMenu-link--sign-up")
@@ -12,26 +12,24 @@ public class MainPaige {
     @FindBy(css = ".HeaderMenu-link--sign-in")
     private WebElement signInButton;
 
-    public MainPaige(WebDriver driver) {
+    public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
-    public MainPaige verifyMainPaigeIsDisplayed() {
+    public MainPage verifyMainPageIsDisplayed() {
         letsBuildFromHereHeader.isDisplayed();
         return this;
     }
-
-    public MainPaige clickSignUp() {
-        signUpButton.isEnabled();
+    public MainPage clickSignUp() {
+        signUpButton.isDisplayed();
         signUpButton.click();
         return this;
     }
 
-    public MainPaige clickSignIn() {
-        signInButton.isEnabled();
+    public MainPage clickSignIn() {
+        signInButton.isDisplayed();
         signInButton.click();
         return this;
     }
-
 
 }
