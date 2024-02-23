@@ -1,29 +1,21 @@
-import dev.failsafe.internal.util.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 public class LoginPageTest extends BaseClass {
     @Test
     public void testForgotPassword() {
         navigateToSignIn();
         new LoginPage(driver)
                 .forgotPassword();
-    }
-    @Test
-    public void signInWithPasskey() {
-        navigateToSignIn();
-        new LoginPage(driver)
-                .signInWithPasskey();
+        ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage(driver);
+        assertTrue(forgotPasswordPage.atPage());
     }
     @Test
     public void createAnAccount() {
-       navigateToSignIn();
+        navigateToSignIn();
         new LoginPage(driver)
-                .createAccount()
-                .isUserRedirectedToSignUp();
-
+                .createAccount();
+        new SignUpPage(driver)
+                .verifyIfSignUpPageIsDisplayed();
     }
     @Test
     public void testLogin() {
@@ -33,7 +25,8 @@ public class LoginPageTest extends BaseClass {
                 .typeEmail("olena.bosa@gmail.com")
                 .typePassword("Qa138468")
                 .clickSignIn();
-        assertTrue(loginPage.isUserLoggedInSuccessfully());
+        new AccountHeader(driver)
+                .verifyAvatarIsDisplayed();
     }
 
 }

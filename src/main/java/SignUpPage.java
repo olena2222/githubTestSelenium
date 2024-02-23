@@ -5,12 +5,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
-
 public class SignUpPage {
     WebDriverWait wait;
-
     @FindBy(css = ".js-signup-typed-welcome")
     private WebElement welcomeToGitHubHeader;
     @FindBy(css = "#email-container")
@@ -37,58 +34,44 @@ public class SignUpPage {
     private WebElement emailPreferencesCheckbox;
     @FindBy(css = "button.js-continue-button.signup-continue-button.form-control.px-3.width-full.width-sm-auto.mt-4.mt-sm-0[data-continue-to=\"captcha-and-submit-container\"]")
     private WebElement continueToVerifyAccountButton;
-
-
     public SignUpPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-
-    public SignUpPage() {
-
-    }
-
     public SignUpPage verifyIfSignUpPageIsDisplayed() {
         welcomeToGitHubHeader.isDisplayed();
         return this;
     }
-
     public SignUpPage typeEmailField(String email) {
         wait.until(ExpectedConditions.visibilityOf(emailContainer));
         enterEmailField.sendKeys(email);
         return this;
     }
-
     public SignUpPage clickContinueToPassword() {
         wait.until(ExpectedConditions.elementToBeClickable(continueToPasswordButton));
         continueToPasswordButton.click();
         return this;
     }
-
     public SignUpPage typePasswordField(String password) {
         passwordContainer.isDisplayed();
         createPasswordField.sendKeys(password);
         return this;
     }
-
     public SignUpPage clickContinueToUsername() {
         wait.until(ExpectedConditions.elementToBeClickable(continueToUsernameButton));
         continueToUsernameButton.click();
         return this;
     }
-
     public SignUpPage typeUsernameField(String username) {
         usernameContainer.isDisplayed();
         typeUsernameField.sendKeys(username);
         return this;
     }
-
     public SignUpPage clickContinueToEmailPreferences() {
         wait.until(ExpectedConditions.elementToBeClickable(continueToEmailPreferencesButton));
         continueToEmailPreferencesButton.click();
         return this;
     }
-
     public SignUpPage clickEmailPreferences() {
         emailPreferencesContainer.isDisplayed();
         if (!emailPreferencesCheckbox.isSelected()) {
@@ -96,12 +79,9 @@ public class SignUpPage {
         }
         return this;
     }
-
     public SignUpPage clickContinueToVerifyAccount() {
         continueToVerifyAccountButton.isEnabled();
         continueToVerifyAccountButton.click();
         return this;
     }
-
-
 }

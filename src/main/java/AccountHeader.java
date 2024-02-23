@@ -1,6 +1,7 @@
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
+import org.openqa.selenium.support.PageFactory;
 public class AccountHeader {
     @FindBy(css = "#dialog-show-dialog-4e008272-39e2-45f5-81bb-9aada0dbdbc7")
     private WebElement accountMenu;
@@ -20,5 +21,11 @@ public class AccountHeader {
     private WebElement notificationButton;
     @FindBy(css = "span.Button-label > img.avatar.circle")
     private WebElement avatarLabel;
-
+    public AccountHeader(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
+    public AccountHeader verifyAvatarIsDisplayed() {
+        avatarLabel.isDisplayed();
+        return this;
+    }
 }

@@ -3,7 +3,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import java.time.Duration;
-
 public abstract class BaseClass {
     WebDriver driver;
     @BeforeEach
@@ -18,7 +17,6 @@ public abstract class BaseClass {
                 .verifyMainPageIsDisplayed()
                 .clickSignUp();
     }
-
     protected void navigateToSignIn() {
         new MainPage(driver)
                 .verifyMainPageIsDisplayed()

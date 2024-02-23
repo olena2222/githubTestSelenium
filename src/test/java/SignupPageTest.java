@@ -13,5 +13,7 @@ public class SignupPageTest extends BaseClass {
                 .clickContinueToEmailPreferences()
                 .clickEmailPreferences()
                 .clickContinueToVerifyAccount();
+        new AccountHeader(driver)
+                .verifyAvatarIsDisplayed();
     }
 }
