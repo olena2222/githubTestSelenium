@@ -1,13 +1,16 @@
+package githubpages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-public class LoginPage {
-    WebDriverWait wait;
+public class LoginPage extends BasePage {
     @FindBy(css = ".auth-form-header")
     private WebElement headerSignIn;
+    @FindBy(css = ".octicon.octicon-mark-github")
+    private WebElement githubIconOnSignIn;
     @FindBy(css = "#login_field")
     private WebElement emailField;
     @FindBy(css = "#password")
@@ -18,39 +21,36 @@ public class LoginPage {
     private WebElement forgotPasswordLink;
     @FindBy(css = ".mt-1 a")
     private WebElement createAccount;
-    @FindBy(css = "p.mb-0.mt-0.js-webauthn-subtle-emu-control")
-    private WebElement signInWithPasskey;
     public LoginPage(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
     public LoginPage verifyLogInPageIsDisplayed() {
-        headerSignIn.isDisplayed();
+        wait.until(ExpectedConditions.visibilityOf(headerSignIn)).isDisplayed();
+        return this;
+    }
+    public LoginPage verifyGitHubIcon() {
+        wait.until(ExpectedConditions.visibilityOf(githubIconOnSignIn)).click();
         return this;
     }
     public LoginPage typeEmail(String email) {
-        emailField.isDisplayed();
-        emailField.sendKeys(email);
+        wait.until(ExpectedConditions.elementToBeClickable(emailField)).sendKeys(email);
         return this;
     }
     public LoginPage typePassword(String password) {
-        passwordField.isDisplayed();
-        passwordField.sendKeys(password);
+        wait.until(ExpectedConditions.elementToBeClickable(passwordField)).sendKeys(password);
         return this;
     }
     public LoginPage clickSignIn() {
-        signInButton.isEnabled();
-        signInButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(signInButton)).click();
         return this;
     }
     public LoginPage forgotPassword() {
-        forgotPasswordLink.isEnabled();
-        forgotPasswordLink.click();
+        wait.until(ExpectedConditions.elementToBeClickable(forgotPasswordLink)).click();
         return this;
     }
     public LoginPage createAccount() {
-        createAccount.isEnabled();
-        createAccount.click();
+        wait.until(ExpectedConditions.visibilityOf(createAccount)).click();
         return this;
     }
 }

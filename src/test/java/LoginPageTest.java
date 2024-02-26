@@ -1,6 +1,11 @@
+import githubelements.AccountHeader;
+import githubpages.ForgotPasswordPage;
+import githubpages.LoginPage;
+import githubpages.MainPage;
+import githubpages.SignUpPage;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-public class LoginPageTest extends BaseClass {
+public class LoginPageTest extends BaseTest {
     @Test
     public void testForgotPassword() {
         navigateToSignIn();
@@ -28,5 +33,12 @@ public class LoginPageTest extends BaseClass {
         new AccountHeader(driver)
                 .verifyAvatarIsDisplayed();
     }
-
+    @Test
+    public void testGithubIcon() {
+        navigateToSignIn();
+        new LoginPage(driver)
+                .verifyGitHubIcon();
+        new MainPage(driver)
+                .verifyMainPageIsDisplayed();
+    }
 }

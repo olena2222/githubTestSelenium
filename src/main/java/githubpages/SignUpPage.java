@@ -1,4 +1,4 @@
-
+package githubpages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -6,10 +6,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-public class SignUpPage {
-    WebDriverWait wait;
+public class SignUpPage extends BasePage {
     @FindBy(css = ".js-signup-typed-welcome")
     private WebElement welcomeToGitHubHeader;
+    @FindBy(css = "a[href*=\"/login?return_to=\"].color-fg-on-emphasis")
+    private WebElement signInButton;
     @FindBy(css = "#email-container")
     private WebElement emailContainer;
     @FindBy(css = "#email")
@@ -35,11 +36,15 @@ public class SignUpPage {
     @FindBy(css = "button.js-continue-button.signup-continue-button.form-control.px-3.width-full.width-sm-auto.mt-4.mt-sm-0[data-continue-to=\"captcha-and-submit-container\"]")
     private WebElement continueToVerifyAccountButton;
     public SignUpPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        PageFactory.initElements(driver, this);
     }
     public SignUpPage verifyIfSignUpPageIsDisplayed() {
-        welcomeToGitHubHeader.isDisplayed();
+        wait.until(ExpectedConditions.visibilityOf(welcomeToGitHubHeader)).isDisplayed();
+        return this;
+    }
+    public SignUpPage clickSignInButton() {
+        wait.until(ExpectedConditions.visibilityOf(signInButton)).click();
         return this;
     }
     public SignUpPage typeEmailField(String email) {
@@ -48,8 +53,7 @@ public class SignUpPage {
         return this;
     }
     public SignUpPage clickContinueToPassword() {
-        wait.until(ExpectedConditions.elementToBeClickable(continueToPasswordButton));
-        continueToPasswordButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(continueToPasswordButton)).click();
         return this;
     }
     public SignUpPage typePasswordField(String password) {
@@ -58,8 +62,7 @@ public class SignUpPage {
         return this;
     }
     public SignUpPage clickContinueToUsername() {
-        wait.until(ExpectedConditions.elementToBeClickable(continueToUsernameButton));
-        continueToUsernameButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(continueToUsernameButton)).click();
         return this;
     }
     public SignUpPage typeUsernameField(String username) {
@@ -68,8 +71,7 @@ public class SignUpPage {
         return this;
     }
     public SignUpPage clickContinueToEmailPreferences() {
-        wait.until(ExpectedConditions.elementToBeClickable(continueToEmailPreferencesButton));
-        continueToEmailPreferencesButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(continueToEmailPreferencesButton)).click();
         return this;
     }
     public SignUpPage clickEmailPreferences() {
@@ -79,6 +81,7 @@ public class SignUpPage {
         }
         return this;
     }
+
     public SignUpPage clickContinueToVerifyAccount() {
         continueToVerifyAccountButton.isEnabled();
         continueToVerifyAccountButton.click();

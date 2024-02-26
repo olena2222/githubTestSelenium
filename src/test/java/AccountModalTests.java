@@ -1,5 +1,7 @@
+import githubelements.AccountModal;
+import githubpages.LoginPage;
 import org.junit.jupiter.api.Test;
-public class AccountModalTests extends BaseClass {
+public class AccountModalTests extends BaseTest {
     @Test
     public void userNavigationModalTest() {
         navigateToSignIn();
