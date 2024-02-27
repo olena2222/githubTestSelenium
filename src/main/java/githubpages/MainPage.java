@@ -18,6 +18,12 @@ public class MainPage extends BasePage {
     private WebElement signUpButton;
     @FindBy(css = ".HeaderMenu-link--sign-in")
     private WebElement signInButton;
+    @FindBy(css = ".d-flex.pt-sm-9 input#user_email")
+    private WebElement emailAddress;
+    @FindBy(css = ".d-flex.pt-sm-9 button.btn-mktg")
+    private WebElement signUpForGitHubButton;
+    @FindBy(css = ".d-flex.pt-sm-9 a.home-campaign-enterprise")
+    private WebElement startFreeEnterpriseTrial;
     public MainPage(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
@@ -26,8 +32,8 @@ public class MainPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(letsBuildFromHereHeader)).isDisplayed();
         return this;
     }
-    public MainPage verifyGithubIconIsDisplayed() {
-        wait.until(ExpectedConditions.visibilityOf(githubIcon)).isDisplayed();
+    public MainPage verifyGithubIcon() {
+        wait.until(ExpectedConditions.visibilityOf(githubIcon)).click();
         return this;
     }
     public MainPage verifySearchField(String search) {
@@ -44,4 +50,14 @@ public class MainPage extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(signInButton)).click();
         return this;
     }
+    public MainPage clickSignUpForGitHub(String email) {
+        wait.until(ExpectedConditions.elementToBeClickable(emailAddress)).sendKeys(email);
+        wait.until(ExpectedConditions.elementToBeClickable(signUpForGitHubButton)).click();
+        return this;
+    }
+    public MainPage clickStartFreeEnterpriseTrial() {
+        wait.until(ExpectedConditions.elementToBeClickable(startFreeEnterpriseTrial)).click();
+        return this;
+    }
+
 }
