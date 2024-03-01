@@ -2,6 +2,7 @@ import githubelements.AccountHeader;
 import githubpages.LoginPage;
 import githubpages.SignUpPage;
 import org.testng.annotations.Test;
+
 public class SignupPageTest extends BaseTest {
     @Test
     public void testSignUp() {
@@ -19,6 +20,7 @@ public class SignupPageTest extends BaseTest {
         new AccountHeader(getDriver())
                 .verifyAvatarIsDisplayed();
     }
+
     @Test
     public void testSignInButton() {
         navigateToSignUp();

@@ -3,12 +3,14 @@ import githubpages.MainPage;
 import githubpages.SearchResultPage;
 import githubpages.SignUpPage;
 import org.testng.annotations.Test;
+
 public class MainPageTest extends BaseTest {
     @Test
     public void testMainPageIsOpened() {
         new MainPage(getDriver())
                 .verifyMainPageIsDisplayed();
     }
+
     @Test
     public void testSearchField() {
         new MainPage(getDriver())
@@ -16,6 +18,7 @@ public class MainPageTest extends BaseTest {
         new SearchResultPage(getDriver())
                 .verifyNumberOfResultsIsDisplayed();
     }
+
     @Test
     public void testGitHubIcon() {
         new MainPage(getDriver())
@@ -23,6 +26,7 @@ public class MainPageTest extends BaseTest {
         new MainPage(getDriver())
                 .verifyMainPageIsDisplayed();
     }
+
     @Test
     public void testSignUpForGitHub() {
         new MainPage(getDriver())
@@ -30,6 +34,7 @@ public class MainPageTest extends BaseTest {
         new SignUpPage(getDriver())
                 .verifyIfSignUpPageIsDisplayed();
     }
+
     @Test
     public void testFreeEnterpriseTrial() {
         new MainPage(getDriver())
