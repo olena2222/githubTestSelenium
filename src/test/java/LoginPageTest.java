@@ -3,42 +3,44 @@ import githubpages.ForgotPasswordPage;
 import githubpages.LoginPage;
 import githubpages.MainPage;
 import githubpages.SignUpPage;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.testng.annotations.Test;
+import static org.testng.AssertJUnit.assertTrue;
+
 public class LoginPageTest extends BaseTest {
     @Test
     public void testForgotPassword() {
+        System.out.println("Thread ID: " + Thread.currentThread().getId());
         navigateToSignIn();
-        new LoginPage(driver)
+        new LoginPage(getDriver())
                 .forgotPassword();
-        ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage(driver);
+        ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage(getDriver());
         assertTrue(forgotPasswordPage.atPage());
     }
     @Test
     public void createAnAccount() {
         navigateToSignIn();
-        new LoginPage(driver)
+        new LoginPage(getDriver())
                 .createAccount();
-        new SignUpPage(driver)
+        new SignUpPage(getDriver())
                 .verifyIfSignUpPageIsDisplayed();
     }
     @Test
     public void testLogin() {
         navigateToSignIn();
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.verifyLogInPageIsDisplayed()
                 .typeEmail("olena.bosa@gmail.com")
                 .typePassword("Qa138468")
                 .clickSignIn();
-        new AccountHeader(driver)
+        new AccountHeader(getDriver())
                 .verifyAvatarIsDisplayed();
     }
     @Test
     public void testGithubIcon() {
         navigateToSignIn();
-        new LoginPage(driver)
+        new LoginPage(getDriver())
                 .verifyGitHubIcon();
-        new MainPage(driver)
+        new MainPage(getDriver())
                 .verifyMainPageIsDisplayed();
     }
 }

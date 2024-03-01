@@ -1,28 +1,36 @@
 import githubpages.MainPage;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
 public abstract class BaseTest {
-    WebDriver driver;
-    @BeforeEach
+    ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    @BeforeMethod
     public void setUp() {
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
-        driver.get("https://github.com/");
+        driver.set(new FirefoxDriver());
+        // getDriver().manage().window().maximize();
+        getDriver().get("https://github.com/");
+    }
+
+    public WebDriver getDriver() {
+        return driver.get();
     }
     protected void navigateToSignUp() {
-        new MainPage(driver)
+        new MainPage(getDriver())
                 .verifyMainPageIsDisplayed()
                 .clickSignUp();
     }
     protected void navigateToSignIn() {
-        new MainPage(driver)
+        new MainPage(getDriver())
                 .verifyMainPageIsDisplayed()
                 .clickSignIn();
     }
-    @AfterEach
+    @AfterMethod
     public void tearDown() {
-        driver.close();
+        if (getDriver() != null) {
+            getDriver().quit();
+            driver.remove();
+        }
     }
 }

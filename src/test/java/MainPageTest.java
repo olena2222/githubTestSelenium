@@ -2,39 +2,39 @@ import githubpages.EnterprisePlansPage;
 import githubpages.MainPage;
 import githubpages.SearchResultPage;
 import githubpages.SignUpPage;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 public class MainPageTest extends BaseTest {
     @Test
     public void testMainPageIsOpened() {
-        new MainPage(driver)
+        new MainPage(getDriver())
                 .verifyMainPageIsDisplayed();
     }
     @Test
     public void testSearchField() {
-        new MainPage(driver)
+        new MainPage(getDriver())
                 .verifySearchField("Security");
-        new SearchResultPage(driver)
+        new SearchResultPage(getDriver())
                 .verifyNumberOfResultsIsDisplayed();
     }
     @Test
     public void testGitHubIcon() {
-        new MainPage(driver)
+        new MainPage(getDriver())
                 .verifyGithubIcon();
-        new MainPage(driver)
+        new MainPage(getDriver())
                 .verifyMainPageIsDisplayed();
     }
     @Test
     public void testSignUpForGitHub() {
-        new MainPage(driver)
+        new MainPage(getDriver())
                 .clickSignUpForGitHub("test123@mail.com");
-        new SignUpPage(driver)
+        new SignUpPage(getDriver())
                 .verifyIfSignUpPageIsDisplayed();
     }
     @Test
     public void testFreeEnterpriseTrial() {
-        new MainPage(driver)
+        new MainPage(getDriver())
                 .clickStartFreeEnterpriseTrial();
-        new EnterprisePlansPage(driver)
+        new EnterprisePlansPage(getDriver())
                 .verifyEnterprisePlansPageIsDisplayed();
     }
 }

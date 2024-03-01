@@ -1,13 +1,12 @@
 import githubelements.AccountHeader;
 import githubpages.LoginPage;
-import githubpages.MainPage;
 import githubpages.SignUpPage;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 public class SignupPageTest extends BaseTest {
     @Test
     public void testSignUp() {
         navigateToSignUp();
-        new SignUpPage(driver)
+        new SignUpPage(getDriver())
                 .verifyIfSignUpPageIsDisplayed()
                 .typeEmailField("olena.bosa2@gmail.com")
                 .clickContinueToPassword()
@@ -17,15 +16,15 @@ public class SignupPageTest extends BaseTest {
                 .clickContinueToEmailPreferences()
                 .clickEmailPreferences()
                 .clickContinueToVerifyAccount();
-        new AccountHeader(driver)
+        new AccountHeader(getDriver())
                 .verifyAvatarIsDisplayed();
     }
     @Test
     public void testSignInButton() {
         navigateToSignUp();
-        new SignUpPage(driver)
+        new SignUpPage(getDriver())
                 .clickSignInButton();
-        new LoginPage(driver)
+        new LoginPage(getDriver())
                 .verifyLogInPageIsDisplayed();
     }
 }
