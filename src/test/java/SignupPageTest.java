@@ -1,8 +1,11 @@
 import githubelements.AccountHeader;
 import githubpages.LoginPage;
 import githubpages.SignUpPage;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
+@Execution(ExecutionMode.CONCURRENT)
 public class SignupPageTest extends BaseTest {
     @Test
     public void testSignUp() {
@@ -20,7 +23,6 @@ public class SignupPageTest extends BaseTest {
         new AccountHeader(getDriver())
                 .verifyAvatarIsDisplayed();
     }
-
     @Test
     public void testSignInButton() {
         navigateToSignUp();

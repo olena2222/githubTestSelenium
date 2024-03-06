@@ -3,14 +3,15 @@ import githubpages.ForgotPasswordPage;
 import githubpages.LoginPage;
 import githubpages.MainPage;
 import githubpages.SignUpPage;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
-import static org.testng.AssertJUnit.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
+@Execution(ExecutionMode.CONCURRENT)
 public class LoginPageTest extends BaseTest {
     @Test
     public void testForgotPassword() {
-        System.out.println("Thread ID: " + Thread.currentThread().getId());
         navigateToSignIn();
         new LoginPage(getDriver())
                 .forgotPassword();

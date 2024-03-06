@@ -2,8 +2,11 @@ import githubpages.EnterprisePlansPage;
 import githubpages.MainPage;
 import githubpages.SearchResultPage;
 import githubpages.SignUpPage;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
+@Execution(ExecutionMode.CONCURRENT)
 public class MainPageTest extends BaseTest {
     @Test
     public void testMainPageIsOpened() {
@@ -18,7 +21,6 @@ public class MainPageTest extends BaseTest {
         new SearchResultPage(getDriver())
                 .verifyNumberOfResultsIsDisplayed();
     }
-
     @Test
     public void testGitHubIcon() {
         new MainPage(getDriver())
@@ -42,4 +44,5 @@ public class MainPageTest extends BaseTest {
         new EnterprisePlansPage(getDriver())
                 .verifyEnterprisePlansPageIsDisplayed();
     }
+
 }
