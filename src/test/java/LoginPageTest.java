@@ -18,7 +18,6 @@ public class LoginPageTest extends BaseTest {
         ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage(getDriver());
         assertTrue(forgotPasswordPage.atPage());
     }
-
     @Test
     public void createAnAccount() {
         navigateToSignIn();
@@ -27,7 +26,6 @@ public class LoginPageTest extends BaseTest {
         new SignUpPage(getDriver())
                 .verifyIfSignUpPageIsDisplayed();
     }
-
     @Test
     public void testLogin() {
         navigateToSignIn();
@@ -39,7 +37,6 @@ public class LoginPageTest extends BaseTest {
         new AccountHeader(getDriver())
                 .verifyAvatarIsDisplayed();
     }
-
     @Test
     public void testGithubIcon() {
         navigateToSignIn();

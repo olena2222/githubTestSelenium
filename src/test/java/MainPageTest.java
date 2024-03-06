@@ -13,7 +13,6 @@ public class MainPageTest extends BaseTest {
         new MainPage(getDriver())
                 .verifyMainPageIsDisplayed();
     }
-
     @Test
     public void testSearchField() {
         new MainPage(getDriver())
@@ -28,7 +27,6 @@ public class MainPageTest extends BaseTest {
         new MainPage(getDriver())
                 .verifyMainPageIsDisplayed();
     }
-
     @Test
     public void testSignUpForGitHub() {
         new MainPage(getDriver())
@@ -36,7 +34,6 @@ public class MainPageTest extends BaseTest {
         new SignUpPage(getDriver())
                 .verifyIfSignUpPageIsDisplayed();
     }
-
     @Test
     public void testFreeEnterpriseTrial() {
         new MainPage(getDriver())
