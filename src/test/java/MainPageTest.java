@@ -5,8 +5,8 @@ import githubpages.SignUpPage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
-
 @Execution(ExecutionMode.CONCURRENT)
+//@ExtendWith(CustomStrategy.class)
 public class MainPageTest extends BaseTest {
     @Test
     public void testMainPageIsOpened() {

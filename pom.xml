@@ -30,6 +30,12 @@
             <version>5.9.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -39,9 +45,13 @@
                 <version>3.2.5</version>
                 <configuration>
                     <systemPropertyVariables>
+                        <junit.platform.output.capture.stdout>true</junit.platform.output.capture.stdout>
+                        <junit.platform.output.capture.stderr>true</junit.platform.output.capture.stderr>
                         <junit.jupiter.execution.parallel.enabled>true</junit.jupiter.execution.parallel.enabled>
                         <junit.jupiter.execution.parallel.mode.default>concurrent</junit.jupiter.execution.parallel.mode.default>
-                        <junit.jupiter.execution.parallel.config.fixed.parallelism>4</junit.jupiter.execution.parallel.config.fixed.parallelism>
+                        <junit.jupiter.execution.parallel.mode.classes.default>concurrent</junit.jupiter.execution.parallel.mode.classes.default>
+                        <junit.jupiter.execution.parallel.config.strategy>custom</junit.jupiter.execution.parallel.config.strategy>
+                        <junit.jupiter.execution.parallel.config.custom.class>CustomStrategy</junit.jupiter.execution.parallel.config.custom.class>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
