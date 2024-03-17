@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -15,9 +14,10 @@ public class FeaturesActionsPage extends BasePage{
     public FeaturesActionsPage(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
+        actionsHelper=new WebActions(wait);
     }
     public FeaturesActionsPage verifyActionsPageIsDisplayed() {
-        wait.until(ExpectedConditions.visibilityOf(actionsIcon)).isDisplayed();
+        actionsHelper.isVisible(actionsIcon);
         return this;
     }
 }

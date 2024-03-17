@@ -1,10 +1,11 @@
 package githubpages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 public class LoginPage extends BasePage {
     @FindBy(css = ".auth-form-header")
@@ -24,33 +25,34 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
+        actionsHelper=new WebActions(wait);
     }
     public LoginPage verifyLogInPageIsDisplayed() {
-        wait.until(ExpectedConditions.visibilityOf(headerSignIn)).isDisplayed();
+       actionsHelper.isVisible(headerSignIn);
         return this;
     }
     public LoginPage verifyGitHubIcon() {
-        wait.until(ExpectedConditions.visibilityOf(githubIconOnSignIn)).click();
+        actionsHelper.click(githubIconOnSignIn);
         return this;
     }
     public LoginPage typeEmail(String email) {
-        wait.until(ExpectedConditions.elementToBeClickable(emailField)).sendKeys(email);
+        actionsHelper.sendKeys(emailField, email);
         return this;
     }
     public LoginPage typePassword(String password) {
-        wait.until(ExpectedConditions.elementToBeClickable(passwordField)).sendKeys(password);
+        actionsHelper.sendKeys(passwordField, password);
         return this;
     }
     public LoginPage clickSignIn() {
-        wait.until(ExpectedConditions.elementToBeClickable(signInButton)).click();
+        actionsHelper.click(signInButton);
         return this;
     }
     public LoginPage forgotPassword() {
-        wait.until(ExpectedConditions.elementToBeClickable(forgotPasswordLink)).click();
+        actionsHelper.click(forgotPasswordLink);
         return this;
     }
     public LoginPage createAccount() {
-        wait.until(ExpectedConditions.visibilityOf(createAccount)).click();
+        actionsHelper.click(createAccount);
         return this;
     }
 }

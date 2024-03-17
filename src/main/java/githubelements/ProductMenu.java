@@ -1,6 +1,5 @@
 package githubelements;
 
-import githubpages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -10,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ProductMenu extends BasePage {
+public class ProductMenu extends BaseActionPage {
     @FindBy(css = "li.HeaderMenu-item:nth-child(1) > button.HeaderMenu-link")
     private WebElement productButton;
     @FindBy(css = "a[data-analytics-event*='\"action\":\"click to go to Actions\"']")
@@ -18,7 +17,8 @@ public class ProductMenu extends BasePage {
     public ProductMenu(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         PageFactory.initElements(driver, this);
-        actions = new Actions(driver);
+        actions=new Actions(driver);
+
     }
 
     public ProductMenu clickActions(){

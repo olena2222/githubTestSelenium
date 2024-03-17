@@ -4,11 +4,8 @@ import githubpages.LoginPage;
 import githubpages.MainPage;
 import githubpages.SignUpPage;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
-@Execution(ExecutionMode.CONCURRENT)
-//@ExtendWith(CustomStrategy.class)
 public class LoginPageTest extends BaseTest {
     @Test
     public void testForgotPassword() {

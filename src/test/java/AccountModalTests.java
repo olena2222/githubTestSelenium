@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 @Execution(ExecutionMode.CONCURRENT)
-//@ExtendWith(CustomStrategy.class)
+
 public class AccountModalTests extends BaseTest {
     @Test
     public void userNavigationModalTest() {

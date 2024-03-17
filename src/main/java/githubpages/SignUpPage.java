@@ -1,30 +1,25 @@
 package githubpages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 public class SignUpPage extends BasePage {
     @FindBy(css = ".js-signup-typed-welcome")
     private WebElement welcomeToGitHubHeader;
     @FindBy(css = "a[href*=\"/login?return_to=\"].color-fg-on-emphasis")
     private WebElement signInButton;
-    @FindBy(css = "#email-container")
-    private WebElement emailContainer;
     @FindBy(css = "#email")
     private WebElement enterEmailField;
     @FindBy(css = "[data-continue-to='password-container']")
     private WebElement continueToPasswordButton;
-    @FindBy(css = "#password-container")
-    private WebElement passwordContainer;
     @FindBy(css = "#password")
     private WebElement createPasswordField;
     @FindBy(css = "[data-continue-to='username-container']")
     private WebElement continueToUsernameButton;
-    @FindBy(css = "#username-container")
-    private WebElement usernameContainer;
     @FindBy(css = "#login")
     private WebElement typeUsernameField;
     @FindBy(css = "[data-continue-to='opt-in-container']")
@@ -38,40 +33,42 @@ public class SignUpPage extends BasePage {
     public SignUpPage(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
+        actionsHelper=new WebActions(wait);
     }
     public SignUpPage verifyIfSignUpPageIsDisplayed() {
-        wait.until(ExpectedConditions.visibilityOf(welcomeToGitHubHeader)).isDisplayed();
+        actionsHelper.isVisible(welcomeToGitHubHeader);
         return this;
     }
     public SignUpPage clickSignInButton() {
-        wait.until(ExpectedConditions.visibilityOf(signInButton)).click();
+        actionsHelper.click(signInButton);
         return this;
     }
     public SignUpPage typeEmailField(String email) {
-        wait.until(ExpectedConditions.visibilityOf(emailContainer));
-        enterEmailField.sendKeys(email);
+        actionsHelper.sendKeys(enterEmailField,email);
+       // wait.until(ExpectedConditions.visibilityOf(emailContainer));
+       // enterEmailField.sendKeys(email);
         return this;
     }
     public SignUpPage clickContinueToPassword() {
-        wait.until(ExpectedConditions.elementToBeClickable(continueToPasswordButton)).click();
+        actionsHelper.click(continueToPasswordButton);
         return this;
     }
     public SignUpPage typePasswordField(String password) {
-        passwordContainer.isDisplayed();
-        createPasswordField.sendKeys(password);
+        actionsHelper.sendKeys(createPasswordField,password);
+
         return this;
     }
     public SignUpPage clickContinueToUsername() {
-        wait.until(ExpectedConditions.elementToBeClickable(continueToUsernameButton)).click();
+        actionsHelper.click(continueToUsernameButton);
         return this;
     }
     public SignUpPage typeUsernameField(String username) {
-        usernameContainer.isDisplayed();
-        typeUsernameField.sendKeys(username);
+        actionsHelper.sendKeys(typeUsernameField, username);
+
         return this;
     }
     public SignUpPage clickContinueToEmailPreferences() {
-        wait.until(ExpectedConditions.elementToBeClickable(continueToEmailPreferencesButton)).click();
+        actionsHelper.click(continueToEmailPreferencesButton);
         return this;
     }
     public SignUpPage clickEmailPreferences() {
