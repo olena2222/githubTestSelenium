@@ -7,15 +7,19 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
 public class SearchResultPage extends BasePage {
     @FindBy(css = ".cgQapc")
     private WebElement numberOfResults;
+
     public SearchResultPage(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
+        webActions = new WebActions(wait);
     }
+
     public SearchResultPage verifyNumberOfResultsIsDisplayed() {
-        actionsHelper.isVisible(numberOfResults);
+        webActions.isVisible(numberOfResults);
         return this;
     }
 }

@@ -18,9 +18,7 @@ public class ProductMenu extends BaseActionPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         PageFactory.initElements(driver, this);
         actions=new Actions(driver);
-
     }
-
     public ProductMenu clickActions(){
       actions.moveToElement(productButton).click(actionsButton).build().perform();
 return this;

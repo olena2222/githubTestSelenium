@@ -17,14 +17,14 @@ public class AccountModal extends BasePage {
     public AccountModal(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         PageFactory.initElements(driver, this);
-        actionsHelper=new WebActions(wait);
+        webActions =new WebActions(wait);
     }
     public AccountModal clickAvatar() {
-        actionsHelper.click(avatarLabel);
+        webActions.click(avatarLabel);
         return this;
     }
     public AccountModal verifyUserNavigationIsDispalyed() {
-        actionsHelper.isVisible(userNavigation);
+        webActions.isVisible(userNavigation);
         return this;
     }
 }

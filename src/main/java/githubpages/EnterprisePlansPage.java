@@ -15,9 +15,11 @@ public class EnterprisePlansPage extends BasePage {
     public EnterprisePlansPage(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
+        webActions = new WebActions(wait);
     }
+
     public EnterprisePlansPage verifyEnterprisePlansPageIsDisplayed() {
-        actionsHelper.isVisible(pickTrialPlanHeader);
+        webActions.isVisible(pickTrialPlanHeader);
         return this;
     }
 }

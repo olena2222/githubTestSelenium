@@ -8,16 +8,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class FeaturesActionsPage extends BasePage{
+public class FeaturesActionsPage extends BasePage {
     @FindBy(css = ".d-inline-block.mr-3")
     private WebElement actionsIcon;
+
     public FeaturesActionsPage(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
-        actionsHelper=new WebActions(wait);
+        webActions = new WebActions(wait);
     }
+
     public FeaturesActionsPage verifyActionsPageIsDisplayed() {
-        actionsHelper.isVisible(actionsIcon);
+        webActions.isVisible(actionsIcon);
         return this;
     }
 }

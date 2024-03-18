@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
 public class LoginPage extends BasePage {
     @FindBy(css = ".auth-form-header")
     private WebElement headerSignIn;
@@ -22,37 +23,45 @@ public class LoginPage extends BasePage {
     private WebElement forgotPasswordLink;
     @FindBy(css = ".mt-1 a")
     private WebElement createAccount;
+
     public LoginPage(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
-        actionsHelper=new WebActions(wait);
+        webActions = new WebActions(wait);
     }
+
     public LoginPage verifyLogInPageIsDisplayed() {
-       actionsHelper.isVisible(headerSignIn);
+        webActions.isVisible(headerSignIn);
         return this;
     }
+
     public LoginPage verifyGitHubIcon() {
-        actionsHelper.click(githubIconOnSignIn);
+        webActions.click(githubIconOnSignIn);
         return this;
     }
+
     public LoginPage typeEmail(String email) {
-        actionsHelper.sendKeys(emailField, email);
+        webActions.sendKeys(emailField, email);
         return this;
     }
+
     public LoginPage typePassword(String password) {
-        actionsHelper.sendKeys(passwordField, password);
+        webActions.sendKeys(passwordField, password);
         return this;
     }
+
     public LoginPage clickSignIn() {
-        actionsHelper.click(signInButton);
+        webActions.click(signInButton);
         return this;
     }
+
     public LoginPage forgotPassword() {
-        actionsHelper.click(forgotPasswordLink);
+        webActions.click(forgotPasswordLink);
         return this;
     }
+
     public LoginPage createAccount() {
-        actionsHelper.click(createAccount);
+        webActions.click(createAccount);
         return this;
     }
 }

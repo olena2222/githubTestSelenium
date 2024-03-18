@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
 public class SignUpPage extends BasePage {
     @FindBy(css = ".js-signup-typed-welcome")
     private WebElement welcomeToGitHubHeader;
@@ -30,47 +31,53 @@ public class SignUpPage extends BasePage {
     private WebElement emailPreferencesCheckbox;
     @FindBy(css = "button.js-continue-button.signup-continue-button.form-control.px-3.width-full.width-sm-auto.mt-4.mt-sm-0[data-continue-to=\"captcha-and-submit-container\"]")
     private WebElement continueToVerifyAccountButton;
+
     public SignUpPage(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
-        actionsHelper=new WebActions(wait);
+        webActions = new WebActions(wait);
     }
+
     public SignUpPage verifyIfSignUpPageIsDisplayed() {
-        actionsHelper.isVisible(welcomeToGitHubHeader);
+        webActions.isVisible(welcomeToGitHubHeader);
         return this;
     }
+
     public SignUpPage clickSignInButton() {
-        actionsHelper.click(signInButton);
+        webActions.click(signInButton);
         return this;
     }
+
     public SignUpPage typeEmailField(String email) {
-        actionsHelper.sendKeys(enterEmailField,email);
-       // wait.until(ExpectedConditions.visibilityOf(emailContainer));
-       // enterEmailField.sendKeys(email);
+        webActions.sendKeys(enterEmailField, email);
         return this;
     }
+
     public SignUpPage clickContinueToPassword() {
-        actionsHelper.click(continueToPasswordButton);
+        webActions.click(continueToPasswordButton);
         return this;
     }
+
     public SignUpPage typePasswordField(String password) {
-        actionsHelper.sendKeys(createPasswordField,password);
-
+        webActions.sendKeys(createPasswordField, password);
         return this;
     }
+
     public SignUpPage clickContinueToUsername() {
-        actionsHelper.click(continueToUsernameButton);
+        webActions.click(continueToUsernameButton);
         return this;
     }
-    public SignUpPage typeUsernameField(String username) {
-        actionsHelper.sendKeys(typeUsernameField, username);
 
+    public SignUpPage typeUsernameField(String username) {
+        webActions.sendKeys(typeUsernameField, username);
         return this;
     }
+
     public SignUpPage clickContinueToEmailPreferences() {
-        actionsHelper.click(continueToEmailPreferencesButton);
+        webActions.click(continueToEmailPreferencesButton);
         return this;
     }
+
     public SignUpPage clickEmailPreferences() {
         emailPreferencesContainer.isDisplayed();
         if (!emailPreferencesCheckbox.isSelected()) {
@@ -80,8 +87,7 @@ public class SignUpPage extends BasePage {
     }
 
     public SignUpPage clickContinueToVerifyAccount() {
-        continueToVerifyAccountButton.isEnabled();
-        continueToVerifyAccountButton.click();
+        webActions.isEnabled(continueToVerifyAccountButton);
         return this;
     }
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
 public class MainPage extends BasePage {
     @FindBy(css = ".octicon.octicon-mark-github")
     private WebElement githubIcon;
@@ -25,40 +26,48 @@ public class MainPage extends BasePage {
     private WebElement signUpForGitHubButton;
     @FindBy(css = ".d-flex.pt-sm-9 a.home-campaign-enterprise")
     private WebElement startFreeEnterpriseTrial;
+
     public MainPage(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
-        actionsHelper=new WebActions( wait);
+        webActions = new WebActions(wait);
     }
+
     public MainPage verifyMainPageIsDisplayed() {
-        actionsHelper.isVisible(letsBuildFromHereHeader);
+        webActions.isVisible(letsBuildFromHereHeader);
         return this;
     }
+
     public MainPage verifyGithubIcon() {
-        actionsHelper.click(githubIcon);
+        webActions.click(githubIcon);
         return this;
     }
+
     public MainPage verifySearchField(String search) {
-        actionsHelper.click(searchButton);
+        webActions.click(searchButton);
         searchButton.sendKeys(search);
         searchButton.sendKeys(Keys.ENTER);
         return this;
     }
+
     public MainPage clickSignUp() {
-        actionsHelper.click(signUpButton);
+        webActions.click(signUpButton);
         return this;
     }
+
     public MainPage clickSignIn() {
-        actionsHelper.click(signInButton);
+        webActions.click(signInButton);
         return this;
     }
+
     public MainPage clickSignUpForGitHub(String email) {
-        actionsHelper.sendKeys(emailAddress,email);
-        actionsHelper.click(signUpForGitHubButton);
+        webActions.sendKeys(emailAddress, email);
+        webActions.click(signUpForGitHubButton);
         return this;
     }
+
     public MainPage clickStartFreeEnterpriseTrial() {
-        actionsHelper.click(startFreeEnterpriseTrial);
+        webActions.click(startFreeEnterpriseTrial);
         return this;
     }
 
