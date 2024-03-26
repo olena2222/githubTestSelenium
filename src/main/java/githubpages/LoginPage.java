@@ -4,11 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class LoginPage extends BasePage {
+public class LoginPage extends BaseComponent {
     @FindBy(css = ".auth-form-header")
     private WebElement headerSignIn;
     @FindBy(css = ".octicon.octicon-mark-github")
@@ -25,43 +22,41 @@ public class LoginPage extends BasePage {
     private WebElement createAccount;
 
     public LoginPage(WebDriver driver) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
-        webActions = new WebActions(wait);
     }
 
     public LoginPage verifyLogInPageIsDisplayed() {
-        webActions.isVisible(headerSignIn);
+        isVisible(headerSignIn);
         return this;
     }
 
     public LoginPage verifyGitHubIcon() {
-        webActions.click(githubIconOnSignIn);
+        click(githubIconOnSignIn);
         return this;
     }
 
     public LoginPage typeEmail(String email) {
-        webActions.sendKeys(emailField, email);
+        sendKeys(emailField, email);
         return this;
     }
 
     public LoginPage typePassword(String password) {
-        webActions.sendKeys(passwordField, password);
+        sendKeys(passwordField, password);
         return this;
     }
 
     public LoginPage clickSignIn() {
-        webActions.click(signInButton);
+        click(signInButton);
         return this;
     }
 
     public LoginPage forgotPassword() {
-        webActions.click(forgotPasswordLink);
+        click(forgotPasswordLink);
         return this;
     }
 
     public LoginPage createAccount() {
-        webActions.click(createAccount);
+        click(createAccount);
         return this;
     }
 }

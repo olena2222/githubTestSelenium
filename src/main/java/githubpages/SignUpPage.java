@@ -4,11 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class SignUpPage extends BasePage {
+public class SignUpPage extends BaseComponent {
     @FindBy(css = ".js-signup-typed-welcome")
     private WebElement welcomeToGitHubHeader;
     @FindBy(css = "a[href*=\"/login?return_to=\"].color-fg-on-emphasis")
@@ -33,48 +30,46 @@ public class SignUpPage extends BasePage {
     private WebElement continueToVerifyAccountButton;
 
     public SignUpPage(WebDriver driver) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
-        webActions = new WebActions(wait);
     }
 
     public SignUpPage verifyIfSignUpPageIsDisplayed() {
-        webActions.isVisible(welcomeToGitHubHeader);
+        isVisible(welcomeToGitHubHeader);
         return this;
     }
 
     public SignUpPage clickSignInButton() {
-        webActions.click(signInButton);
+        click(signInButton);
         return this;
     }
 
     public SignUpPage typeEmailField(String email) {
-        webActions.sendKeys(enterEmailField, email);
+        sendKeys(enterEmailField, email);
         return this;
     }
 
     public SignUpPage clickContinueToPassword() {
-        webActions.click(continueToPasswordButton);
+        click(continueToPasswordButton);
         return this;
     }
 
     public SignUpPage typePasswordField(String password) {
-        webActions.sendKeys(createPasswordField, password);
+        sendKeys(createPasswordField, password);
         return this;
     }
 
     public SignUpPage clickContinueToUsername() {
-        webActions.click(continueToUsernameButton);
+        click(continueToUsernameButton);
         return this;
     }
 
     public SignUpPage typeUsernameField(String username) {
-        webActions.sendKeys(typeUsernameField, username);
+        sendKeys(typeUsernameField, username);
         return this;
     }
 
     public SignUpPage clickContinueToEmailPreferences() {
-        webActions.click(continueToEmailPreferencesButton);
+        click(continueToEmailPreferencesButton);
         return this;
     }
 
@@ -87,7 +82,7 @@ public class SignUpPage extends BasePage {
     }
 
     public SignUpPage clickContinueToVerifyAccount() {
-        webActions.isEnabled(continueToVerifyAccountButton);
+        isEnabled(continueToVerifyAccountButton);
         return this;
     }
 }
