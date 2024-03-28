@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 public class ProductMenuTest extends BaseTest {
     @Test
     public void clickActions () {
-        new ProductMenu(getDriver())
+        new ProductMenu()
                 .clickActions();
-        new FeaturesActionsPage(getDriver())
+        new FeaturesActionsPage()
                 .verifyActionsPageIsDisplayed();
     }
 }

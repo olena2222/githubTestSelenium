@@ -1,32 +1,18 @@
 package githubpages;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.By;
 
 public class MainPage extends BaseComponent {
-    @FindBy(css = ".octicon.octicon-mark-github")
-    private WebElement githubIcon;
-    @FindBy(css = ".header-search-button")
-    private WebElement searchButton;
-    @FindBy(css = ".h0-mktg")
-    private WebElement letsBuildFromHereHeader;
-    @FindBy(css = ".HeaderMenu-link--sign-up")
-    private WebElement signUpButton;
-    @FindBy(css = ".HeaderMenu-link--sign-in")
-    private WebElement signInButton;
-    @FindBy(css = ".d-flex.pt-sm-9 input#user_email")
-    private WebElement emailAddress;
-    @FindBy(css = ".d-flex.pt-sm-9 button.btn-mktg")
-    private WebElement signUpForGitHubButton;
-    @FindBy(css = ".d-flex.pt-sm-9 a.home-campaign-enterprise")
-    private WebElement startFreeEnterpriseTrial;
+    By githubIcon= By.cssSelector(".octicon.octicon-mark-github");
+    By searchButton= By.cssSelector(".header-search-button");
+    By searchField= By.cssSelector("#query-builder-test");
+    By letsBuildFromHereHeader= By.cssSelector(".h0-mktg");
+    By signUpButton= By.cssSelector(".HeaderMenu-link--sign-up");
+    By signInButton= By.cssSelector(".HeaderMenu-link--sign-in");
+    By emailAddress= By.cssSelector(".d-flex.pt-sm-9 input#user_email");
+    By signUpForGitHubButton= By.cssSelector(".d-flex.pt-sm-9 button.btn-mktg");
+    By startFreeEnterpriseTrial= By.cssSelector(".d-flex.pt-sm-9 a.home-campaign-enterprise");
 
-    public MainPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
 
     public MainPage verifyMainPageIsDisplayed() {
         isVisible(letsBuildFromHereHeader);
@@ -40,8 +26,7 @@ public class MainPage extends BaseComponent {
 
     public MainPage verifySearchField(String search) {
         click(searchButton);
-        searchButton.sendKeys(search);
-        searchButton.sendKeys(Keys.ENTER);
+        sendKeys(searchField,search);
         return this;
     }
 

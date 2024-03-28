@@ -9,12 +9,12 @@ public class AccountModalTests extends BaseTest {
     @Test
     public void userNavigationModalTest() {
         navigateToSignIn();
-        new LoginPage(getDriver())
+        new LoginPage()
                 .verifyLogInPageIsDisplayed()
                 .typeEmail("olena.bosa@gmail.com")
                 .typePassword("Qa138468")
                 .clickSignIn();
-        new AccountModal(getDriver())
+        new AccountModal()
                 .clickAvatar()
                 .verifyUserNavigationIsDispalyed();
     }

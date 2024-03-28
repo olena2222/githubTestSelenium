@@ -10,36 +10,36 @@ public class LoginPageTest extends BaseTest {
     @Test
     public void testForgotPassword() {
         navigateToSignIn();
-        new LoginPage(getDriver())
+        new LoginPage()
                 .forgotPassword();
-        ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage(getDriver());
+        ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage();
         assertTrue(forgotPasswordPage.atPage());
     }
     @Test
     public void createAnAccount() {
         navigateToSignIn();
-        new LoginPage(getDriver())
+        new LoginPage()
                 .createAccount();
-        new SignUpPage(getDriver())
+        new SignUpPage()
                 .verifyIfSignUpPageIsDisplayed();
     }
     @Test
     public void testLogin() {
         navigateToSignIn();
-        LoginPage loginPage = new LoginPage(getDriver());
+        LoginPage loginPage = new LoginPage();
         loginPage.verifyLogInPageIsDisplayed()
                 .typeEmail("olena.bosa@gmail.com")
                 .typePassword("Qa138468")
                 .clickSignIn();
-        new AccountHeader(getDriver())
+        new AccountHeader()
                 .verifyAvatarIsDisplayed();
     }
     @Test
     public void testGithubIcon() {
         navigateToSignIn();
-        new LoginPage(getDriver())
+        new LoginPage()
                 .verifyGitHubIcon();
-        new MainPage(getDriver())
+        new MainPage()
                 .verifyMainPageIsDisplayed();
     }
 }

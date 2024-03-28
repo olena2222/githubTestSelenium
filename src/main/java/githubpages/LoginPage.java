@@ -1,29 +1,15 @@
 package githubpages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.By;
 
 public class LoginPage extends BaseComponent {
-    @FindBy(css = ".auth-form-header")
-    private WebElement headerSignIn;
-    @FindBy(css = ".octicon.octicon-mark-github")
-    private WebElement githubIconOnSignIn;
-    @FindBy(css = "#login_field")
-    private WebElement emailField;
-    @FindBy(css = "#password")
-    private WebElement passwordField;
-    @FindBy(css = ".btn-primary")
-    private WebElement signInButton;
-    @FindBy(css = "#forgot-password")
-    private WebElement forgotPasswordLink;
-    @FindBy(css = ".mt-1 a")
-    private WebElement createAccount;
-
-    public LoginPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
+    By headerSignIn = By.cssSelector(".auth-form-header");
+    By githubIconOnSignIn = By.cssSelector(".octicon.octicon-mark-github");
+    By emailField = By.cssSelector("#login_field");
+    By passwordField = By.cssSelector("#password");
+    By signInButton = By.cssSelector(".btn-primary");
+    By forgotPasswordLink = By.cssSelector("#forgot-password");
+    By createAccount = By.cssSelector(".mt-1 a");
 
     public LoginPage verifyLogInPageIsDisplayed() {
         isVisible(headerSignIn);

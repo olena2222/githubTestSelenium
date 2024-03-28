@@ -6,35 +6,35 @@ import org.junit.jupiter.api.Test;
 public class MainPageTest extends BaseTest {
     @Test
     public void testMainPageIsOpened() {
-        new MainPage(getDriver())
+        new MainPage()
                 .verifyMainPageIsDisplayed();
     }
     @Test
     public void testSearchField() {
-        new MainPage(getDriver())
+        new MainPage()
                 .verifySearchField("Security");
-        new SearchResultPage(getDriver())
+        new SearchResultPage()
                 .verifyNumberOfResultsIsDisplayed();
     }
     @Test
     public void testGitHubIcon() {
-        new MainPage(getDriver())
+        new MainPage()
                 .verifyGithubIcon();
-        new MainPage(getDriver())
+        new MainPage()
                 .verifyMainPageIsDisplayed();
     }
     @Test
     public void testSignUpForGitHub() {
-        new MainPage(getDriver())
+        new MainPage()
                 .clickSignUpForGitHub("test123@mail.com");
-        new SignUpPage(getDriver())
+        new SignUpPage()
                 .verifyIfSignUpPageIsDisplayed();
     }
     @Test
     public void testFreeEnterpriseTrial() {
-        new MainPage(getDriver())
+        new MainPage()
                 .clickStartFreeEnterpriseTrial();
-        new EnterprisePlansPage(getDriver())
+        new EnterprisePlansPage()
                 .verifyEnterprisePlansPageIsDisplayed();
     }
 

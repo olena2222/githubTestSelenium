@@ -14,13 +14,13 @@ public abstract class BaseTest {
     }
 
     protected void navigateToSignUp() {
-        new MainPage(getDriver())
+        new MainPage()
                 .verifyMainPageIsDisplayed()
                 .clickSignUp();
     }
 
     protected void navigateToSignIn() {
-        new MainPage(getDriver())
+        new MainPage()
                 .verifyMainPageIsDisplayed()
                 .clickSignIn();
     }

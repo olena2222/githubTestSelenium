@@ -1,18 +1,9 @@
 package githubpages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.By;
 
 public class SearchResultPage extends BaseComponent {
-    @FindBy(css = ".cgQapc")
-    private WebElement numberOfResults;
-
-    public SearchResultPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
-
+    By numberOfResults=By.cssSelector(".cgQapc");
     public SearchResultPage verifyNumberOfResultsIsDisplayed() {
         isVisible(numberOfResults);
         return this;

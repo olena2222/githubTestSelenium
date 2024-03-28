@@ -6,7 +6,7 @@ public class SignupPageTest extends BaseTest {
     @Test
     public void testSignUp() {
         navigateToSignUp();
-        new SignUpPage(getDriver())
+        new SignUpPage()
                 .verifyIfSignUpPageIsDisplayed()
                 .typeEmailField("olena.bosa2@gmail.com")
                 .clickContinueToPassword()
@@ -16,15 +16,15 @@ public class SignupPageTest extends BaseTest {
                 .clickContinueToEmailPreferences()
                 .clickEmailPreferences()
                 .clickContinueToVerifyAccount();
-        new AccountHeader(getDriver())
+        new AccountHeader()
                 .verifyAvatarIsDisplayed();
     }
     @Test
     public void testSignInButton() {
         navigateToSignUp();
-        new SignUpPage(getDriver())
+        new SignUpPage()
                 .clickSignInButton();
-        new LoginPage(getDriver())
+        new LoginPage()
                 .verifyLogInPageIsDisplayed();
     }
 }
