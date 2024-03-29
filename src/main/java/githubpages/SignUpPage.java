@@ -3,18 +3,18 @@ package githubpages;
 import org.openqa.selenium.By;
 
 public class SignUpPage extends BaseComponent {
-    By welcomeToGitHubHeader=By.cssSelector(".js-signup-typed-welcome");
-    By signInButton=By.cssSelector("a[href*=\"/login?return_to=\"].color-fg-on-emphasis");
-    By enterEmailField=By.cssSelector("#email");
-    By continueToPasswordButton=By.cssSelector("[data-continue-to='password-container']");
-    By createPasswordField=By.cssSelector("#password");
-    By continueToUsernameButton=By.cssSelector("[data-continue-to='username-container']");
-    By typeUsernameField=By.cssSelector("#login");
-    By continueToEmailPreferencesButton=By.cssSelector("[data-continue-to='opt-in-container']");
-    By emailPreferencesContainer=By.cssSelector("#opt-in-container");
-    By emailPreferencesCheckbox=By.cssSelector("#opt_in");
+    By welcomeToGitHubHeader = By.cssSelector(".js-signup-typed-welcome");
+    By signInButton = By.cssSelector("a[href*=\"/login?return_to=\"].color-fg-on-emphasis");
+    By enterEmailField = By.cssSelector("#email");
+    By continueToPasswordButton = By.cssSelector("[data-continue-to='password-container']");
+    By createPasswordField = By.cssSelector("#password");
+    By continueToUsernameButton = By.cssSelector("[data-continue-to='username-container']");
+    By typeUsernameField = By.cssSelector("#login");
+    By continueToEmailPreferencesButton = By.cssSelector("[data-continue-to='opt-in-container']");
+    By emailPreferencesContainer = By.cssSelector("#opt-in-container");
+    By emailPreferencesCheckbox = By.cssSelector("#opt_in");
 
-    By continueToVerifyAccountButton=By.cssSelector("button.js-continue-button.signup-continue-button.form-control.px-3.width-full.width-sm-auto.mt-4.mt-sm-0[data-continue-to=\"captcha-and-submit-container\"]");
+    By continueToVerifyAccountButton = By.cssSelector("button.js-continue-button.signup-continue-button.form-control.px-3.width-full.width-sm-auto.mt-4.mt-sm-0[data-continue-to=\"captcha-and-submit-container\"]");
 
     public SignUpPage verifyIfSignUpPageIsDisplayed() {
         isVisible(welcomeToGitHubHeader);
@@ -62,7 +62,6 @@ public class SignUpPage extends BaseComponent {
         }
         return this;
     }
-
 
     public SignUpPage clickContinueToVerifyAccount() {
         isEnabled(continueToVerifyAccountButton);

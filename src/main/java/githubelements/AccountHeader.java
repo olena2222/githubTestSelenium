@@ -4,7 +4,7 @@ import githubpages.BaseComponent;
 import org.openqa.selenium.By;
 
 public class AccountHeader extends BaseComponent {
-    By avatarLabel=By.cssSelector("span.Button-label > img.avatar.circle");
+    By avatarLabel = By.cssSelector("span.Button-label > img.avatar.circle");
 
     public AccountHeader verifyAvatarIsDisplayed() {
         isVisible(avatarLabel);
