@@ -57,18 +57,16 @@ public class SignUpPage extends BaseComponent {
     }
 
     public SignUpPage clickEmailPreferences() {
-        if (!checkboxIsSelected(emailPreferencesCheckbox)) {
-            click(emailPreferencesCheckbox);
+        if (!isSelected(emailPreferencesCheckbox)) {
+            click(emailPreferencesContainer);
         }
         return this;
-    }
-    public boolean checkboxIsSelected(By checkbox){
-        return isSelected(checkbox);
     }
 
 
     public SignUpPage clickContinueToVerifyAccount() {
         isEnabled(continueToVerifyAccountButton);
+        click(continueToVerifyAccountButton);
         return this;
     }
 }
